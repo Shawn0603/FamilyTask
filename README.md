@@ -55,7 +55,7 @@ One spouse assigns a reminder to the other (e.g., "buy gardening supplies after 
 ---
 
 ## 📂 Folder Structure
-
+``` 
 FamilyTask/
 │
 ├── backend/ # Java Spring Boot backend (to be implemented)
@@ -66,7 +66,7 @@ FamilyTask/
 ├── screenshots/ # UI screenshots
 ├── README.md
 └── LICENSE
-
+``` 
 
 ---
 
