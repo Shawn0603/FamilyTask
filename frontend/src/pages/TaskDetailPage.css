@@ -1,0 +1,103 @@
+.task-detail-container {
+  max-width: 1500px;
+  width: 60vw;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 90vh;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+
+.task-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.task-header h2 {
+  font-size: 24px;
+  color: #1f2937;
+}
+
+.created-time {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+
+.task-actions {
+  display: flex;
+  justify-content: center;
+  gap: 40px; 
+  margin-bottom: 40px; 
+}
+
+.action-btn {
+  font-size: 24px;
+  background: #e5e7eb;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.action-btn.important {
+  background-color: #facc15;
+  color: #1f2937;
+  border: 2px solid #f59e0b;
+  font-weight: bold;
+}
+
+
+.task-note textarea {
+  width: 90%;
+  min-height: 160px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 48px; 
+}
+
+
+.title-input {
+  font-size: 1.5rem;
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+
+.edit-title-btn {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+
+.task-footer-buttons {
+  margin-top: 64px; 
+  display: flex;
+  justify-content: center;
+  gap: 32px; 
+}
+
+.task-footer-buttons .action-btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
