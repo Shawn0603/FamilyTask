@@ -60,3 +60,9 @@ npm run dev
 
 cd backend
 ./mvnw spring-boot:run
+
+
+Database: familytask
+User: postgres
+Password: your_password
+
