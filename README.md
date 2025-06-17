@@ -56,14 +56,3 @@ One spouse assigns a reminder to the other (e.g., "buy gardening supplies after 
 cd frontend
 npm install
 npm run dev
-
-
-
-
-
-
-
-
-
-
-
