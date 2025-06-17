@@ -39,12 +39,33 @@ One spouse assigns a reminder to the other (e.g., "buy gardening supplies after 
 - **React Router DOM** for navigation
 - **Zustand** for state management
 
-### Backend
+### Backend (Planned)
 
-- **Java + Spring Boot** (User authentication completed)
-- **Spring Security** with JWT-based authentication
-- **PostgreSQL** database
-- **RESTful API** development in progress
+- Java + Spring Boot (in development)
+- REST API support
+- JWT authentication
+- PostgreSQL database
+
+---
+
+## 📸 Screenshots
+
+> (Screenshots will be displayed here once deployed)
+
+---
+
+## 📂 Folder Structure
+FamilyTask/
+│
+├── backend/ # Spring Boot backend (authentication completed)
+├── frontend/ # React frontend project
+│ ├── src/ # Frontend source code
+│ ├── public/ # Static assets
+│ └── ...
+├── screenshots/ # UI screenshots
+├── README.md
+└── LICENSE
+ 
 
 ---
 
@@ -62,7 +83,15 @@ cd backend
 ./mvnw spring-boot:run
 
 
-Database: familytask
-User: postgres
-Password: your_password
 
+## ✅ Status
+
+- [x] Frontend MVP complete
+- [ ] Backend setup in progress
+- [ ] Task syncing & auth integration
+
+---
+
+## 📌 License
+
+This project is licensed under the MIT License.
