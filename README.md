@@ -83,7 +83,6 @@ cd backend
 ./mvnw spring-boot:run
 
 
-
 ## ✅ Status
 
 - [x] Frontend MVP complete
