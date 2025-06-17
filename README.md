@@ -53,7 +53,7 @@ One spouse assigns a reminder to the other (e.g., "buy gardening supplies after 
 > (Screenshots will be displayed here once deployed)
 
 ---
-
+'''
 ## 📂 Folder Structure
 FamilyTask/
 │
@@ -65,7 +65,7 @@ FamilyTask/
 ├── screenshots/ # UI screenshots
 ├── README.md
 └── LICENSE
- 
+ '''
 
 ---
 
