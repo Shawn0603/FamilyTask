@@ -1,0 +1,178 @@
+/* === Outer Container === */
+.register-container {
+    max-width: 600px;
+    width: 70vw;
+    margin: 60px auto;
+    padding: 40px 20px;
+    min-height: 90vh;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+  /* === Top Title Section === */
+  .title-section {
+    margin-top: -40px;
+    margin-bottom: 20px;
+  }
+  
+  .app-title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 8px;
+  }
+  
+  .slogan {
+    font-size: 16px;
+    color: #6b7280;
+    font-style: italic;
+  }
+  
+  /* === Register Title === */
+  .register-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 30px;
+  }
+  
+  /* === Register Form === */
+  .register-form {
+    max-width: 400px;
+    width: 100%;
+    margin: 0 auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  /* === Input Fields === */
+  .register-form input {
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+  }
+  
+  .register-form input:focus {
+    border-color: #60a5fa;
+    outline: none;
+  }
+  
+  /* === Submit Button === */
+  .register-form button {
+    width: 60%;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    background-color: #10b981;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .register-form button:hover {
+    background-color: #059669;
+  }
+  
+  /* === Error Message === */
+  .error-msg {
+    color: #dc2626;
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  /* === Back Button === */
+  .back-button {
+    margin-top: 16px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    background-color: #10b981;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .back-button:hover {
+    background-color: #059669;
+  }
+  /* === Shared Button Style (applies to both Register & Back) === */
+.register-button,
+.back-button {
+  width: 240px; /* fixed width */
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  background-color: #10b981;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 0 auto; /* center horizontally */
+}
+
+/* === Hover effect for both buttons === */
+.register-button:hover,
+.back-button:hover {
+  background-color: #059669;
+}
+
+/* === Button Group: horizontal layout === */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 12px;
+  }
+  
+  /* Register button */
+  .register-button {
+    width: 140px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: #10b981;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .register-button:hover {
+    background-color: #059669;
+  }
+  
+  /* Back button: same size and style */
+  .back-button {
+    width: 140px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    background-color: #10b981;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .back-button:hover {
+    background-color: #059669;
+  }
+  

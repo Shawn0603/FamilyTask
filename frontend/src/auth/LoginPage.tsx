@@ -27,11 +27,8 @@ function LoginPage() {
       if (response.ok) {
         const data = await response.json(); 
         const token = data.token;
-
-        // save token
         login(token); 
         localStorage.setItem('token', token); 
-
         navigate('/'); 
       } else {
         setError('Wrong username or password');
@@ -44,7 +41,14 @@ function LoginPage() {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+
+ 
+      <div className="title-section">
+        <h1 className="app-title">FamilTask</h1>
+        <p className="slogan">Technology Improves Life</p>
+      </div>
+
+  
       <form onSubmit={handleSubmit} className="login-form">
         <input
           type="text"
@@ -55,17 +59,19 @@ function LoginPage() {
         />
         <input
           type="password"
-          placeholder="passward"
+          placeholder="password"
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
         />
         {error && <p className="error-msg">{error}</p>}
-        <button type="submit">login</button>
+        <button type="submit" className="login-button">login</button>
+
       </form>
 
-      <p>
-      No account yet?<Link to="/register">Click to register</Link>
+   
+      <p className="footer-text">
+        No account yet? <Link className="register-link" to="/register">Click to register</Link>
       </p>
     </div>
   );

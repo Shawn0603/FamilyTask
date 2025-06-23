@@ -1,51 +1,53 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import './LoginPage.css';
+import './RegisterPage.css';
 
 function RegisterPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [confirm, setConfirm] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!username || !password) {
-      setError('Username and password cannot be empty');
-      return;
-    }
-
-    if (password !== confirm) {
-      setError('The two passwords you entered do not match.');
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
       return;
     }
 
     try {
-      const response = await axios.post('http://localhost:8080/api/auth/register', {
-        username,
-        password,
+      const response = await fetch('http://localhost:8080/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
       });
 
-      if (response.status === 200) {
-        console.log('✅ Successful registration');
-        navigate('/');
+      if (response.ok) {
+        navigate('/login');
       } else {
-        setError('Registration failed：' + response.data);
+        setError("Registration failed");
       }
-    } catch (err: any) {
-      console.error('❌ Registration failed', err);
-      setError('Registration failed: Username already exists or server error');
+    } catch (err) {
+      setError("Something went wrong");
     }
   };
 
+  const handleBack = () => {
+    navigate('/login');
+  };
+
   return (
-    <div className="login-container">
-      <h2>register</h2>
-      <form onSubmit={handleSubmit} className="login-form">
+    <div className="register-container">
+      {/* Top Section */}
+      <div className="title-section">
+        <h1 className="app-title">FamilTask</h1>
+        <p className="slogan">Technology Improves Life</p>
+      </div>
+
+      {/* Register Form */}
+      <form onSubmit={handleRegister} className="register-form">
         <input
           type="text"
           placeholder="Please enter your username"
@@ -63,12 +65,17 @@ function RegisterPage() {
         <input
           type="password"
           placeholder="Confirm Password"
-          value={confirm}
-          onChange={e => setConfirm(e.target.value)}
+          value={confirmPassword}
+          onChange={e => setConfirmPassword(e.target.value)}
           required
         />
         {error && <p className="error-msg">{error}</p>}
-        <button type="submit">register</button>
+
+        {/* Button Group */}
+        <div className="button-group">
+          <button type="submit" className="register-button">Register</button>
+          <button type="button" className="back-button" onClick={handleBack}>← Back</button>
+        </div>
       </form>
     </div>
   );
