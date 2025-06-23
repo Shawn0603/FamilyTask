@@ -33,22 +33,22 @@ public class AuthService {
     }
 
     public String login(String username, String password) {
-        System.out.println("🟡 尝试登录用户: " + username);
-        System.out.println("🧩 当前所有用户: " + userRepository.findAll());
+        System.out.println("🟡 Try to log in a user: " + username);
+        System.out.println("🧩 All current users: " + userRepository.findAll());
 
         return userRepository.findByUsername(username)
                 .map(user -> {
                     if (passwordEncoder.matches(password, user.getPassword())) {
                         String token = jwtService.generateToken(user.getUsername());
-                        System.out.println("🟢 登录成功，生成 JWT: " + token);
+                        System.out.println("🟢 Login successful, generate JWT: " + token);
                         return token;
                     } else {
-                        System.out.println("🔴 密码错误");
+                        System.out.println("🔴 Wrong password");
                         return "Invalid password";
                     }
                 })
                 .orElseGet(() -> {
-                    System.out.println("🔴 用户不存在");
+                    System.out.println("🔴 User does not exist");
                     return "User not found";
                 });
     }

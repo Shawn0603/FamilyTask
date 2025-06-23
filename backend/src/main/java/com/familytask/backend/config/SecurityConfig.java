@@ -36,7 +36,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .cors().and() // ✅ 启用 CORS 支持
+            .cors().and() 
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**", "/api/public").permitAll() // 放行登录注册
@@ -54,13 +54,13 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5173")); // 允许来自前端的请求
-        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); // 允许请求方法
-        config.setAllowedHeaders(List.of("*")); // 允许所有请求头
-        config.setAllowCredentials(true); // 允许携带 Cookie 或 Authorization 等
+        config.setAllowedOrigins(List.of("http://localhost:5173")); 
+        config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS")); 
+        config.setAllowedHeaders(List.of("*")); 
+        config.setAllowCredentials(true); 
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config); // 对所有路径生效
+        source.registerCorsConfiguration("/**", config); 
         return source;
     }
 

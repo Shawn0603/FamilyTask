@@ -25,47 +25,47 @@ function LoginPage() {
       });
 
       if (response.ok) {
-        const data = await response.json(); // 返回 { token: "..." }
+        const data = await response.json(); 
         const token = data.token;
 
-        // 保存 token
-        login(token); // Zustand 存入
-        localStorage.setItem('token', token); // 本地存入
+        // save token
+        login(token); 
+        localStorage.setItem('token', token); 
 
-        navigate('/'); // 登录成功跳转主页面
+        navigate('/'); 
       } else {
-        setError('用户名或密码错误');
+        setError('Wrong username or password');
       }
     } catch (err) {
-      console.error('登录失败:', err);
-      setError('登录过程中发生错误，请稍后再试');
+      console.error('Login Failed:', err);
+      setError('An error occurred during login, please try again later');
     }
   };
 
   return (
     <div className="login-container">
-      <h2>登录</h2>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit} className="login-form">
         <input
           type="text"
-          placeholder="用户名"
+          placeholder="username"
           value={username}
           onChange={e => setUsername(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="密码"
+          placeholder="passward"
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
         />
         {error && <p className="error-msg">{error}</p>}
-        <button type="submit">登录</button>
+        <button type="submit">login</button>
       </form>
 
       <p>
-        还没有账号？<Link to="/register">点击注册</Link>
+      No account yet?<Link to="/register">Click to register</Link>
       </p>
     </div>
   );

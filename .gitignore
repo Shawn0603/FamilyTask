@@ -2,7 +2,6 @@
 *.class
 *.log
 *.ctxt
-.mtj.tmp/
 *.jar
 *.war
 *.nar
@@ -10,24 +9,26 @@
 *.zip
 *.tar.gz
 *.rar
+*.iml
 hs_err_pid*
 replay_pid*
+/backend/target/
+*.db
+*.mv.db
+*.trace.db
 
 # === React/Vite frontend ignore ===
 /frontend/node_modules/
 /frontend/dist/
+/frontend/build/
+/frontend/.vite/
 /frontend/.env
 /frontend/.env.*
-
-# macOS
-.DS_Store
-
-# Vite internals
-/frontend/.vite/
-
-# Coverage reports
 /frontend/coverage/
+/frontend/*.tsbuildinfo
 
-# Editor config
+# === Editor and System files ===
 .vscode/
 .idea/
+.DS_Store
+Thumbs.db

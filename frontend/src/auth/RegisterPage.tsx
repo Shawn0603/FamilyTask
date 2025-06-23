@@ -15,12 +15,12 @@ function RegisterPage() {
     e.preventDefault();
 
     if (!username || !password) {
-      setError('用户名和密码不能为空');
+      setError('Username and password cannot be empty');
       return;
     }
 
     if (password !== confirm) {
-      setError('两次密码输入不一致');
+      setError('The two passwords you entered do not match.');
       return;
     }
 
@@ -31,44 +31,44 @@ function RegisterPage() {
       });
 
       if (response.status === 200) {
-        console.log('✅ 注册成功');
+        console.log('✅ Successful registration');
         navigate('/');
       } else {
-        setError('注册失败：' + response.data);
+        setError('Registration failed：' + response.data);
       }
     } catch (err: any) {
-      console.error('❌ 注册失败', err);
-      setError('注册失败：用户名已存在或服务器错误');
+      console.error('❌ Registration failed', err);
+      setError('Registration failed: Username already exists or server error');
     }
   };
 
   return (
     <div className="login-container">
-      <h2>注册</h2>
+      <h2>register</h2>
       <form onSubmit={handleSubmit} className="login-form">
         <input
           type="text"
-          placeholder="请输入用户名"
+          placeholder="Please enter your username"
           value={username}
           onChange={e => setUsername(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="请输入密码"
+          placeholder="Please enter your password"
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="确认密码"
+          placeholder="Confirm Password"
           value={confirm}
           onChange={e => setConfirm(e.target.value)}
           required
         />
         {error && <p className="error-msg">{error}</p>}
-        <button type="submit">注册</button>
+        <button type="submit">register</button>
       </form>
     </div>
   );

@@ -11,10 +11,10 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    // ✅ 推荐方式：自动生成安全密钥（密钥保存在内存，不需手动编码）
+    
     private static final Key SIGNING_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    // 直接返回这个密钥
+   
     private Key getSignInKey() {
         return SIGNING_KEY;
     }
@@ -23,7 +23,7 @@ public class JwtService {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) // 1 天有效期
+                .setExpiration(new Date(System.currentTimeMillis() + 86400000)) 
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }

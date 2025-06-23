@@ -6,9 +6,9 @@ interface AuthGuardProps {
 }
 
 function AuthGuard({ children }: AuthGuardProps) {
-  const token = useAuthStore(state => state.token); // ✅ 读取 token 判断登录状态
+  const token = useAuthStore(state => state.token); 
 
-  console.log('🔐 当前 token:', token); // ✅ 打印当前 token，调试用
+  console.log('🔐 当前 token:', token); 
 
   if (!token) {
     return <Navigate to="/login" replace />;

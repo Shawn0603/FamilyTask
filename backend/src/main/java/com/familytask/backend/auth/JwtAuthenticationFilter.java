@@ -28,11 +28,11 @@ protected void doFilterInternal(
         throws ServletException, IOException {
 
     String path = request.getServletPath();
-    System.out.println("🛡️ Filter intercepting path: " + path);  // 添加这一行
+    System.out.println("🛡️ Filter intercepting path: " + path); 
 
-    // ✅ 放行无需认证的路径
+    
     if (path.startsWith("/api/auth/")) {
-        System.out.println("➡️ 放行路径：" + path);  // 添加日志
+        System.out.println("➡️ Release path：" + path);  
         filterChain.doFilter(request, response);
         return;
     }
@@ -42,19 +42,19 @@ protected void doFilterInternal(
     final String username;
 
     if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-        System.out.println("❌ 无效 Authorization Header，放行");
+        System.out.println(" Invalid Authorization Header, allow access");
         filterChain.doFilter(request, response);
         return;
     }
 
     jwt = authHeader.substring(7);
     username = jwtService.extractUsername(jwt);
-    System.out.println("🔍 解析 JWT username: " + username);
+    System.out.println(" Parsing JWT username: " + username);
 
     if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
         var userDetails = userDetailsService.loadUserByUsername(username);
         if (jwtService.isTokenValid(jwt, userDetails)) {
-            System.out.println("✅ JWT 验证成功，设置认证上下文");
+            System.out.println(" JWT verification succeeds, setting authentication context");
 
             var authToken = new UsernamePasswordAuthenticationToken(
                     userDetails, null, userDetails.getAuthorities());
@@ -62,7 +62,7 @@ protected void doFilterInternal(
                     new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authToken);
         } else {
-            System.out.println("❌ JWT 无效");
+            System.out.println("Invalid JWT");
         }
     }
 
