@@ -26,4 +26,17 @@ public class AuthService {
         userRepository.save(newUser);
         return "User registered successfully";
     }
+
+    // Added new login method
+    public String login(String username, String password) {
+        return userRepository.findByUsername(username)
+                .map(user -> {
+                    if (passwordEncoder.matches(password, user.getPassword())) {
+                        return "Login successful";
+                    } else {
+                        return "Invalid password";
+                    }
+                })
+                .orElse("User not found");
+    }
 }
