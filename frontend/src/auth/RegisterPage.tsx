@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuthStore } from './useAuthStore';
-import './LoginPage.css'; 
+import axios from 'axios';
+import './LoginPage.css';
 
 function RegisterPage() {
   const [username, setUsername] = useState('');
@@ -9,50 +9,66 @@ function RegisterPage() {
   const [confirm, setConfirm] = useState('');
   const [error, setError] = useState('');
 
-  const login = useAuthStore(state => state.login);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!username || !password) {
-      setError('Username and password are required');
-    } else if (password !== confirm) {
-      setError('Passwords do not match');
-    } else {
-      // mock sigin
-      login(username);
-      navigate('/');
+      setError('用户名和密码不能为空');
+      return;
+    }
+
+    if (password !== confirm) {
+      setError('两次密码输入不一致');
+      return;
+    }
+
+    try {
+      const response = await axios.post('http://localhost:8080/api/auth/register', {
+        username,
+        password,
+      });
+
+      if (response.status === 200) {
+        console.log('✅ 注册成功');
+        navigate('/');
+      } else {
+        setError('注册失败：' + response.data);
+      }
+    } catch (err: any) {
+      console.error('❌ 注册失败', err);
+      setError('注册失败：用户名已存在或服务器错误');
     }
   };
 
   return (
     <div className="login-container">
-      <h2>Register</h2>
+      <h2>注册</h2>
       <form onSubmit={handleSubmit} className="login-form">
         <input
           type="text"
-          placeholder="Choose a username"
+          placeholder="请输入用户名"
           value={username}
           onChange={e => setUsername(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="Create a password"
+          placeholder="请输入密码"
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
         />
         <input
           type="password"
-          placeholder="Confirm password"
+          placeholder="确认密码"
           value={confirm}
           onChange={e => setConfirm(e.target.value)}
           required
         />
         {error && <p className="error-msg">{error}</p>}
-        <button type="submit">Register</button>
+        <button type="submit">注册</button>
       </form>
     </div>
   );

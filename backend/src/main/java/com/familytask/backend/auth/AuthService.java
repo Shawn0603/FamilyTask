@@ -34,6 +34,8 @@ public class AuthService {
 
     public String login(String username, String password) {
         System.out.println("🟡 尝试登录用户: " + username);
+        System.out.println("🧩 当前所有用户: " + userRepository.findAll());
+
         return userRepository.findByUsername(username)
                 .map(user -> {
                     if (passwordEncoder.matches(password, user.getPassword())) {
