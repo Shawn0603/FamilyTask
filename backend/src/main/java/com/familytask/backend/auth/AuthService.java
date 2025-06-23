@@ -12,9 +12,14 @@ public class AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtService jwtService; 
+
+    public boolean usernameExists(String username) {
+        return userRepository.findByUsername(username).isPresent();
+    }
 
     public String register(String username, String password) {
-        if (userRepository.findByUsername(username).isPresent()) {
+        if (usernameExists(username)) {
             return "Username already exists";
         }
 
@@ -27,16 +32,22 @@ public class AuthService {
         return "User registered successfully";
     }
 
-    // Added new login method
     public String login(String username, String password) {
+        System.out.println("🟡 尝试登录用户: " + username);
         return userRepository.findByUsername(username)
                 .map(user -> {
                     if (passwordEncoder.matches(password, user.getPassword())) {
-                        return "Login successful";
+                        String token = jwtService.generateToken(user.getUsername());
+                        System.out.println("🟢 登录成功，生成 JWT: " + token);
+                        return token;
                     } else {
+                        System.out.println("🔴 密码错误");
                         return "Invalid password";
                     }
                 })
-                .orElse("User not found");
+                .orElseGet(() -> {
+                    System.out.println("🔴 用户不存在");
+                    return "User not found";
+                });
     }
 }
