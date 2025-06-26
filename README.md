@@ -41,7 +41,7 @@ One spouse assigns a reminder to the other (e.g., "buy gardening supplies after 
 
 ### Backend (Planned)
 
-- Java + Spring Boot (in development)
+- Java + Spring Boot
 - REST API support
 - JWT authentication
 - PostgreSQL database
